@@ -33,4 +33,4 @@ spec:
       volumes:
         - name: app-storage
           persistentVolumeClaim:
-            claimName: prescripto-pvc
+            claimName: prod-prescripto-pvc
