@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prescripto-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prescripto-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: prescripto-backend
+    spec:
+      containers:
+        - name: backend
+          image: krishnasanjay/prescripto-backend:latest
+          ports:
+            - containerPort: 4000
+          resources:
+            requests:
+              cpu: "200m"
+            limits:
+              cpu: "500m"
+          volumeMounts:
+            - name: app-storage
+              mountPath: /app/data
+      volumes:
+        - name: app-storage
+          persistentVolumeClaim:
+            claimName: prescripto-pvc
