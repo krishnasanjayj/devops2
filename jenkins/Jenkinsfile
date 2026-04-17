@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "your-dockerhub-username/prescripto-backend"
+        DOCKER_IMAGE = "krishnasanjay/prescripto-backend"
         SONARQUBE_ENV = "sonarqube-server"
     }
 
@@ -14,7 +14,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                git branch: 'main', url: 'https://github.com/krishnasanjayj/devops2'
             }
         }
 
